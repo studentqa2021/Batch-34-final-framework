@@ -43,9 +43,6 @@ public class StepDef {
 
 	@Then("logout should there")
 	public void logout_should_there() {
-	    // TestNG/Junit>> Assertion = Hard Assert & SoftAssert
-	
-	//Assert.assertEquals(false, false);
 		SoftAssert sf = new SoftAssert();
 		sf.assertTrue(driver.findElement(LoginPage.logOut).isDisplayed());
 	    
