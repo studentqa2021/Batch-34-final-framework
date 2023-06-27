@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
 
+import com.page.object.model.LoginPage;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,19 +25,19 @@ public class StepDef {
 
 	@When("put valid user name")
 	public void put_valid_user_name() {
-		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("Batch34");
+		driver.findElement(LoginPage.userName).sendKeys("Batch34");
 	    
 	}
 
 	@When("put valid password value")
 	public void put_valid_password_value() {
-		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("student123@");
+		driver.findElement(LoginPage.passWord).sendKeys("student123@");
 	    
 	}
 
 	@When("click login button")
 	public void click_login_button() {
-		driver.findElement(By.xpath("//*[@type='submit']")).click();;
+		driver.findElement(LoginPage.logIn).click();;
 	    
 	}
 
@@ -45,7 +47,7 @@ public class StepDef {
 	
 	//Assert.assertEquals(false, false);
 		SoftAssert sf = new SoftAssert();
-		sf.assertTrue(driver.findElement(By.xpath("//*[text()='Logout']")).isDisplayed());
+		sf.assertTrue(driver.findElement(LoginPage.logOut).isDisplayed());
 	    
 		sf.assertAll();
 	}
