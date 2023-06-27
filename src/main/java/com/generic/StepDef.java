@@ -14,6 +14,7 @@ import com.page.object.model.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StepDef {
 	private static Logger logger = LoggerFactory.getLogger(StepDef.class);
@@ -21,9 +22,10 @@ public class StepDef {
 	@Given("Open browser and  go to application")
 	public void open_browser_and_go_to_application() {
 	    //code 
-		ChromeOptions co = new ChromeOptions();
-		co.addArguments("--remote-allow-origins=*");
-		 driver = new ChromeDriver(co);
+//		ChromeOptions co = new ChromeOptions();
+//		co.addArguments("--remote-allow-origins=*");
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("file:///C:/Users/sarow/OneDrive/Desktop/Banking%20Application/Batch%2034/Statements/dev_online%20Banking%20monthly_yearly%20statement.html");
 	    System.out.println(driver.getTitle());
