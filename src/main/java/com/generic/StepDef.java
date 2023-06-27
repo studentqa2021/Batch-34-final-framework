@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.asserts.SoftAssert;
 
 import com.page.object.model.LoginPage;
@@ -17,7 +18,9 @@ public class StepDef {
 	@Given("Open browser and  go to application")
 	public void open_browser_and_go_to_application() {
 	    //code 
-		 driver = new ChromeDriver();
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		 driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
 		driver.get("file:///C:/Users/sarow/OneDrive/Desktop/Banking%20Application/Batch%2034/Statements/dev_online%20Banking%20monthly_yearly%20statement.html");
 	    
