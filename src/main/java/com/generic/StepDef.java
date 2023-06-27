@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.asserts.SoftAssert;
 
 import com.page.object.model.LoginPage;
@@ -14,6 +16,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDef {
+	private static Logger logger = LoggerFactory.getLogger(StepDef.class);
 	WebDriver driver ;
 	@Given("Open browser and  go to application")
 	public void open_browser_and_go_to_application() {
@@ -23,11 +26,13 @@ public class StepDef {
 		 driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
 		driver.get("file:///C:/Users/sarow/OneDrive/Desktop/Banking%20Application/Batch%2034/Statements/dev_online%20Banking%20monthly_yearly%20statement.html");
-	    
+	    System.out.println(driver.getTitle());
+	    logger.info(driver.getTitle());
 	}
 
 	@When("put valid user name")
 	public void put_valid_user_name() {
+		 logger.info(driver.getCurrentUrl());
 		driver.findElement(LoginPage.userName).sendKeys("Batch34");
 	    
 	}
